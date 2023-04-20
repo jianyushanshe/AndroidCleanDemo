@@ -1,15 +1,24 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.provider.DocumentsContract
+import android.view.Menu
+import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
+import androidx.documentfile.provider.DocumentFile
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,4 +64,32 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+
+
+    /**
+     * 在这里保存data目录授权状态，否则每次检测授权都是未授权
+     */
+    @SuppressLint("WrongConstant")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, @Nullable data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        var uri: Uri? = null
+        if (data == null) {
+            return
+        }
+        if (requestCode == 888 && data.data.also { uri = it } != null) {
+            uri?.let {
+                contentResolver.takePersistableUriPermission(
+                    it, data.flags and (Intent.FLAG_GRANT_READ_URI_PERMISSION
+                            or Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
+                )
+            } //关键是这里，这个就是保存这个目录的访问权限
+        }
+    }
+
+
+
+
 }
+

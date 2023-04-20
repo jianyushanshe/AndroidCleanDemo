@@ -1,28 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
     tools:context=".FirstFragment">
-
-    <TextView
-        android:id="@+id/textview_first"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_first_fragment"
-        app:layout_constraintBottom_toTopOf="@id/button_first"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/button_first"
+        android:id="@+id/button_get_all_processes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ram_clear"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_first" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="获取正在运行的进程"
+        android:visibility="visible" />
+
+            <Button
+                android:id="@+id/button_get_app_cache_with_storagestats"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="获取应用缓存大小（需要权限PACKAGE_USAGE_STATS）"
+                android:visibility="visible" />
+
+    <Button
+        android:id="@+id/button_clean_all_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:text="清理所有应用的缓存"
+        />
+
+    <Button
+        android:id="@+id/button_get_all_processes_no_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:text="获取正在运行的进程"
+        />
+
+    <Button
+        android:id="@+id/button_kill"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="杀进程"
+       />
+
+    <Button
+        android:id="@+id/button_get_file_manager_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取所有文件管理权限"
+       />
+
+    <Button
+        android:id="@+id/button_permissionX"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="通过PermissionX获取权限" />
+    <Button
+        android:id="@+id/button_get_all_apps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取所有已安装应用(无需权限)"
+         />
+
+    <Button
+        android:id="@+id/button_get_data_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android11、12获取data目录权限"
+        />
+    <Button
+        android:id="@+id/button_delete_app_cache_11_12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android11、12删除YouTube cache"
+        />
+    <Button
+        android:id="@+id/button_get_data_permission_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android13获取单个应用data目录权限"
+        />
+    <Button
+        android:id="@+id/button_check_data_permission_app"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android13检测单个应用data目录权限" />
+    <Button
+        android:id="@+id/button_delete_app_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Android13删除YouTube cache" />
+    <Button
+        android:id="@+id/button_get_battery_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取电池信息" />
+
+    <Button
+        android:id="@+id/button_reset_image_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置照片信息" />
+    <Button
+        android:id="@+id/button_get_image_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="读取照片信息" />
+    <Button
+        android:id="@+id/button_get_notification_manager_permission"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="获取通知管理权限" />
+    <Button
+        android:id="@+id/button_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="跳转导航页面" />
+
+
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+</androidx.appcompat.widget.LinearLayoutCompat>
